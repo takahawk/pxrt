@@ -1,3 +1,4 @@
+TARGET = build/pxrt
 PKGCONFIG = $(shell which pkg-config)
 CFLAGS = $(shell $(PKGCONFIG) --cflags gtk+-3.0)
 LIBS = $(shell $(PKGCONFIG) --libs gtk+-3.0)
@@ -7,7 +8,7 @@ SRC = pxrt.c
 BUILT_SRC = resources.c
 OBJS = $(SRC:.c=.o) $(BUILT_SRC:.c=.o)
 
-all: pxrt
+all: $(TARGET)
 
 resources.c: pxrt.gresource.xml pxrt_window.glade
 	$(GLIB_COMPILE_RESOURCES) pxrt.gresource.xml --target=$@ --sourcedir=. --generate-source
@@ -15,10 +16,11 @@ resources.c: pxrt.gresource.xml pxrt_window.glade
 %.o: %.c
 	$(CC) -c -o $@ $(CFLAGS) $<
 
-pxrt: $(OBJS)
+$(TARGET): $(OBJS)
+	mkdir -p $(@D)
 	$(CC) -o $@ $(OBJS) $(LIBS)
 
 clean:
 	rm -f *.o
-	rm -f pxrt
+	rm -f $(TARGET)
 	rm -f $(BUILT_SRC)
