@@ -3,13 +3,13 @@ CFLAGS = $(shell $(PKGCONFIG) --cflags gtk+-3.0)
 LIBS = $(shell $(PKGCONFIG) --libs gtk+-3.0)
 GLIB_COMPILE_RESOURCES = $(shell $(PKGCONFIG) --variable=glib_compile_resources gio-2.0)
 
-SRC = main.c
+SRC = pxrt.c
 BUILT_SRC = resources.c
 OBJS = $(SRC:.c=.o) $(BUILT_SRC:.c=.o)
 
 all: pxrt
 
-resources.c: pxrt.gresource.xml pxrt_window.ui
+resources.c: pxrt.gresource.xml pxrt_window.glade
 	$(GLIB_COMPILE_RESOURCES) pxrt.gresource.xml --target=$@ --sourcedir=. --generate-source
 
 %.o: %.c
