@@ -68,7 +68,7 @@ pxrt_image_free(PxrtImage **image)
 PxrtRgba
 pxrt_image_get_pixel(PxrtImage *image, int x, int y)
 {
-	return image->pixels[image->height * y + x]; // FIXME: stub
+	return image->pixels[image->width * y + x]; // FIXME: stub
 }
 
 PxrtImage *
@@ -144,5 +144,9 @@ dealloc_layer(PxrtLayer **layer)
 static void
 update_pixel(PxrtImage *image, int x, int y)
 {
-	// TODO: implement
+	PxrtRgba pixel = { 0, 0, 0, 0 };
+
+	// TODO: apply layers to value
+	
+	image->pixels[y * image->width + x] = pixel;
 }
