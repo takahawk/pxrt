@@ -4,6 +4,7 @@
   <requires lib="gtk+" version="3.12"/>
   <object class="GtkWindow" id="pxrt_window">
     <property name="can_focus">False</property>
+    <signal name="show" handler="pxrt_window_show" swapped="no"/>
     <child>
       <object class="GtkBox" id="box2">
         <property name="visible">True</property>
@@ -182,7 +183,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkNotebook" id="notebook1">
+          <object class="GtkNotebook" id="image_tabs">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child>
