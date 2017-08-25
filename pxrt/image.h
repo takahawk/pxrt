@@ -13,6 +13,24 @@ typedef struct {
 	uint8_t alpha;
 } PxrtRgba;
 
+
+/**
+* Adds new layer to image
+* @param image receiver
+* @param width width in pixels of the new layer
+* @param height height in pixels of the new layer
+* @return new layer
+*/
+PxrtLayer *
+pxrt_image_add_layer(PxrtImage *image, int width, int height);
+
+/**
+* Disposes image and frees memory
+* @param image image to be disposed
+*/
+void
+pxrt_image_free(PxrtImage **image);
+
 /**
 * Returns color value in a given position
 * @param image receiver
@@ -31,23 +49,6 @@ pxrt_image_get_pixel(PxrtImage *image, int x, int y);
 */
 PxrtImage *
 pxrt_image_new(int width, int height);
-
-/**
-* Disposes image and frees memory
-* @param image image to be disposed
-*/
-void
-pxrt_image_free(PxrtImage **image);
-
-/**
-* Adds new layer to image
-* @param image receiver
-* @param width width in pixels of the new layer
-* @param height height in pixels of the new layer
-* @return new layer
-*/
-PxrtLayer *
-pxrt_image_add_layer(PxrtImage *image, int width, int height);
 
 /**
 * Removes layer from image
