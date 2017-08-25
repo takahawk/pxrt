@@ -3,7 +3,7 @@ CFLAGS = $(shell $(PKGCONFIG) --cflags gtk+-3.0)
 LIBS = $(shell $(PKGCONFIG) --libs gtk+-3.0)
 
 SRC = main.c
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRCd:.c=.o)
 
 all: pxrt
 
